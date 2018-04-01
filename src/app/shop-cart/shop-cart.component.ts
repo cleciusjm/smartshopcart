@@ -17,7 +17,7 @@ export class ShopCartComponent implements OnInit {
   }
 
   get items() {
-    return this.cart.items;
+    return this.cart.items.reverse();
   }
 
   onNewClick() {
