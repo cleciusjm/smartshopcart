@@ -1,6 +1,10 @@
 export class ShopCart {
   items: ShopCartItem[] = [];
 
+  get total() {
+    return this.items.map(i => i.total).reduce((p, c) => p + c, 0);
+  }
+
 }
 export class ShopCartItem {
   name = '';
