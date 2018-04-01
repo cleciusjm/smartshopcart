@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
+import { ShopCart } from './shop-cart/shop-cart';
+
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `<app-shop-cart [cart]="cart"></app-shop-cart>`
 })
 export class AppComponent {
-  title = 'app';
+  cart = new ShopCart();
 }
