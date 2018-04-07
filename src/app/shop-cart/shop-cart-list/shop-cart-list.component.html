@@ -1,0 +1,40 @@
+<td-layout>
+  <td-navigation-drawer flex sidenavTitle="Meu Carinho">
+    <mat-nav-list>
+      <a mat-list-item>
+        <mat-icon>home</mat-icon>
+        Carrinho de Compras
+      </a>
+    </mat-nav-list>
+  </td-navigation-drawer>
+  <td-layout-nav toolbarTitle="Meu Carrinho" navigationRoute="/">
+    <button mat-icon-button td-menu-button tdLayoutToggle>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <section class="body">
+      <div class="list">
+        <header>
+          <h1>Carrinho de compras</h1>
+        </header>
+        <section class="items">
+          <mat-list>
+            <mat-list-item class="item" *ngFor="let item of items">
+              <h4 mat-line>{{item.name}}</h4>
+              <p mat-line> {{item.amount}} un x {{item.unitaryValue | currency:'BRL'}} = {{item.total | currency:'BRL'}}</p>
+              <mat-divider></mat-divider>
+            </mat-list-item>
+          </mat-list>
+        </section>
+      </div>
+      <footer class="mat-elevation-z2">
+        <div>
+          <label>Total</label>
+          {{cart.total | currency:'BRL'}}
+        </div>
+      </footer>
+    </section>
+    <button mat-fab color="primary" (click)="onNewClick()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </td-layout-nav>
+</td-layout>

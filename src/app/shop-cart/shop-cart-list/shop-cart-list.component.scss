@@ -1,0 +1,33 @@
+$toolbarH: 64px;
+$footerH: 64px;
+:host {
+    button[mat-fab] {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+    }
+    .body {
+        .list {
+            height: calc(100vh - #{$toolbarH + $footerH} - 2px);
+            max-height: calc(100vh - #{$toolbarH + $footerH} - 2px);
+            margin-bottom: 2px;
+            overflow-y: auto;
+            header {
+                margin: 2px 5px;
+            }
+            .items {
+                overflow-y: auto;
+                .item {
+                    background: white;
+                }
+            }
+        }
+        footer {
+            background: white;
+            height: $footerH;
+            font-size: 2.5em;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+}

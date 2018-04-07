@@ -9,17 +9,12 @@ import { ShopCart, ShopCartItem } from './shop-cart';
 })
 export class ShopCartComponent implements OnInit {
 
-  @Input() cart: ShopCart;
+  cart = new ShopCart();
 
   constructor() { }
 
   ngOnInit() {
   }
-
-  get items() {
-    return this.cart.items.reverse();
-  }
-
   onNewClick() {
     const item = new ShopCartItem();
     item.name = "Teste " + (this.cart.items.length + 1);
@@ -27,5 +22,4 @@ export class ShopCartComponent implements OnInit {
     item.unitaryValue = Math.round(Math.random() * 1000) / 100;
     this.cart.items.push(item);
   }
-
 }
