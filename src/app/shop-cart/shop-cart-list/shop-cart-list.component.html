@@ -18,7 +18,7 @@
         </header>
         <section class="items">
           <mat-list>
-            <mat-list-item class="item" *ngFor="let item of items">
+            <mat-list-item class="item" *ngFor="let item of items" (click)="onItemSelect(item)">
               <h4 mat-line>{{item.name}}</h4>
               <p mat-line> {{item.amount}} un x {{item.unitaryValue | currency:'BRL'}} = {{item.total | currency:'BRL'}}</p>
               <mat-divider></mat-divider>

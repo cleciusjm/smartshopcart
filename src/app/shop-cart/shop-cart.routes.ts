@@ -9,7 +9,7 @@ const routes: Routes = [
     component: ShopCartComponent,
   },
   {
-    path: 'cart/newItem',
+    path: 'cart/:item',
     component: ShopCartComponent,
   }
 ];

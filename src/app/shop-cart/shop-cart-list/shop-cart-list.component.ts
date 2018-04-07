@@ -11,6 +11,7 @@ export class ShopCartListComponent implements OnInit {
   @Input() cart: ShopCart;
 
   @Output() newClick = new EventEmitter();
+  @Output() itemSelect = new EventEmitter();
 
   constructor() { }
 
@@ -23,6 +24,10 @@ export class ShopCartListComponent implements OnInit {
 
   onNewClick() {
     this.newClick.emit();
+  }
+  
+  onItemSelect(item: ShopCartItem) {
+    this.itemSelect.emit(item);
   }
 
 }

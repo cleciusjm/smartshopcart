@@ -27,7 +27,13 @@ export class ShopCartComponent implements OnInit {
         const last = url[url.length - 1]
         if (last.path == NEW_ITEM_PATH) {
           this.selectedItem = this.createNewItem();
+        } else if (!isNaN(+last.path)) {
+          const idx = +last.path;
+          if (this.cart.items.length >= idx) {
+            this.selectedItem = this.cart.items[idx];
+          }
         }
+
       }
     })
   }
@@ -46,6 +52,13 @@ export class ShopCartComponent implements OnInit {
 
   onNewClick() {
     this.router.navigate(['cart', NEW_ITEM_PATH])
+  }
+
+  onItemSelect(item: ShopCartItem) {
+    const idx = this.cart.items.indexOf(item);
+    if (idx > 0) {
+      this.router.navigate(['cart', `${idx}`])
+    }
   }
 
   onItemSaveClick(item: ShopCartItem) {
