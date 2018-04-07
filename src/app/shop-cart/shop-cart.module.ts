@@ -6,6 +6,8 @@ import { ShopCartListComponent } from './shop-cart-list/shop-cart-list.component
 import { ShopCartComponent } from './shop-cart.component';
 import * as Routes from "./shop-cart.routes"
 import { RouterModule } from '@angular/router';
+import { ShopCartItemDetailComponent } from './shop-cart-item-detail/shop-cart-item-detail.component';
+import { ShopCartService } from './shop-cart.service';
 
 @NgModule({
   imports: [
@@ -13,9 +15,11 @@ import { RouterModule } from '@angular/router';
     SharedModule,
     Routes.module
   ],
+  providers: [ShopCartService],
   declarations: [
     ShopCartComponent,
-    ShopCartListComponent
+    ShopCartListComponent,
+    ShopCartItemDetailComponent
   ],
   exports: [RouterModule]
 })

@@ -6,7 +6,11 @@ import { ShopCartComponent } from './shop-cart.component';
 const routes: Routes = [
   {
     path: 'cart',
-    component: ShopCartComponent
+    component: ShopCartComponent,
+  },
+  {
+    path: 'cart/newItem',
+    component: ShopCartComponent,
   }
 ];
 

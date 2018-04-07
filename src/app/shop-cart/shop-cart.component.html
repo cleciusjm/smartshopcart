@@ -1,1 +1,2 @@
-<app-shop-cart-list [cart]="cart" (newClick)="onNewClick()"></app-shop-cart-list>
+<app-shop-cart-list *ngIf="showList" [cart]="cart" (newClick)="onNewClick()"></app-shop-cart-list>
+<app-shop-cart-item-detail *ngIf="showDetails" [item]="selectedItem" (saveClick)="onItemSaveClick($event)"></app-shop-cart-item-detail>
