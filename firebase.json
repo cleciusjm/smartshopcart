@@ -1,0 +1,35 @@
+{
+  "hosting": {
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*"
+    ],
+    "rewrites": [
+      {
+        "source": "/assets/favicon.ico",
+        "destination": "/favicon.ico"
+      },
+      {
+        "source": "/ngsw.json",
+        "destination": "/ngsw.json"
+      },
+      {
+        "source": "/ngsw-worker.js",
+        "destination": "/ngsw-worker.js"
+      },
+      {
+        "source": "/manifest.json",
+        "destination": "/manifest.json"
+      },
+      {
+        "source": "/assets",
+        "destination": "/assets"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
