@@ -10,13 +10,13 @@
             <input matInput type="text" placeholder="Produto" formControlName="name">
           </mat-form-field>
           <mat-form-field>
-            <input matInput type="number" placeholder="Valor Unitário" formControlName="unitaryPrice">
+            <input matInput type="number" placeholder="Valor Unitário" formControlName="unitaryValue">
           </mat-form-field>
           <mat-form-field>
             <input matInput type="number" placeholder="Quantidade" formControlName="amount">
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Valor Total" readonly>
+            <input matInput placeholder="Valor Total" [value]="item.total | currency:'BRL'" readonly>
           </mat-form-field>
         </form>
       </mat-card>

@@ -10,19 +10,35 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class ShopCartItemDetailComponent implements OnInit {
 
-  @Input() item: ShopCartItem;
 
   @Output() saveClick = new EventEmitter<ShopCartItem>();
 
   form: FormGroup;
 
   constructor(private location: Location, private fb: FormBuilder) {
-
     this.form = fb.group({
       name: ['', Validators.required],
-      amount: ['1', Validators.required],
-      unitaryPrice: ['0.00', Validators.required]
+      amount: ['', Validators.required],
+      unitaryValue: ['', Validators.required]
     });
+  }
+
+  @Input()
+  set item(value: ShopCartItem) {
+    this.form.setValue({
+      name: value.name,
+      amount: value.amount,
+      unitaryValue: value.unitaryValue
+    })
+  }
+
+  get item() {
+    const val = this.form.value;
+    const item = new ShopCartItem();
+    item.name = val.name;
+    item.amount = val.amount;
+    item.unitaryValue = val.unitaryValue;
+    return item;
   }
 
   ngOnInit() {

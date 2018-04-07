@@ -41,11 +41,7 @@ export class ShopCartComponent implements OnInit {
   }
 
   createNewItem(): ShopCartItem {
-    const item = new ShopCartItem();
-    item.name = "Teste ";
-    item.amount = 1;
-    item.unitaryValue = Math.round(Math.random() * 1000) / 100;
-    return item;
+    return new ShopCartItem();
   }
 
   onNewClick() {
