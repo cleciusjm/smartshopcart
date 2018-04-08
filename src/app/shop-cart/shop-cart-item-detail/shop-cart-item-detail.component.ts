@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ShopCartItem } from '../shop-cart';
 import { Location } from '@angular/common';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-shop-cart-item-detail',
@@ -14,7 +15,10 @@ export class ShopCartItemDetailComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private location: Location, private fb: FormBuilder) {
+  constructor(
+    private location: Location,
+    private fb: FormBuilder,
+    private snackbar: MatSnackBar) {
     this.form = fb.group({
       id: '',
       name: ['', Validators.required],
@@ -27,7 +31,7 @@ export class ShopCartItemDetailComponent implements OnInit {
   set item(value: ShopCartItem) {
     this.form.setValue({
       id: value.id,
-      name: value.name,
+      name: value.name.trim(),
       amount: value.amount,
       unitaryValue: value.unitaryValue
     })
@@ -36,7 +40,7 @@ export class ShopCartItemDetailComponent implements OnInit {
   get item() {
     const val = this.form.value;
     const item = new ShopCartItem(val.id);
-    item.name = val.name;
+    item.name = val.name.trim();
     item.amount = val.amount;
     item.unitaryValue = val.unitaryValue;
     return item;
@@ -47,8 +51,12 @@ export class ShopCartItemDetailComponent implements OnInit {
   }
 
   onSaveClick() {
-    this.saveClick.emit(this.item);
-    this.goBack();
+    if (this.canSave) {
+      this.saveClick.emit(this.item);
+      this.goBack();
+    } else {
+      this.snackbar.open('Preencha corretamente os campos', null, { duration: 2000 });
+    }
   }
 
   goBack() {

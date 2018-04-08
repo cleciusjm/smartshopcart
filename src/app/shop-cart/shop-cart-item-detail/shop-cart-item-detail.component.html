@@ -3,26 +3,26 @@
     <button mat-icon-button td-menu-button (click)="goBack()">
       <mat-icon>arrow_back</mat-icon>
     </button>
-    <section class="body">
-      <mat-card>
-        <form [formGroup]="form">
+    <form [formGroup]="form" (submit)="onSaveClick()">
+      <section class="body">
+        <mat-card>
           <mat-form-field>
             <input matInput type="text" placeholder="Produto" formControlName="name">
           </mat-form-field>
           <mat-form-field>
-            <input matInput type="number" placeholder="Valor Unitário" formControlName="unitaryValue">
+            <input matInput #unValue type="number" placeholder="Valor Unitário" formControlName="unitaryValue" (focus)="unValue.select()">
           </mat-form-field>
           <mat-form-field>
-            <input matInput type="number" placeholder="Quantidade" formControlName="amount">
+            <input matInput #amount type="number" placeholder="Quantidade" formControlName="amount" (focus)="amount.select()">
           </mat-form-field>
           <mat-form-field>
             <input matInput placeholder="Valor Total" [value]="item.total | currency:'BRL'" readonly>
           </mat-form-field>
-        </form>
-      </mat-card>
-    </section>
-    <button mat-fab *ngIf="canSave" color="primary" (click)="onSaveClick()">
-      <mat-icon>check</mat-icon>
-    </button>
+        </mat-card>
+      </section>
+      <button mat-fab type="submit" *ngIf="canSave" color="primary" (click)="onSaveClick()">
+        <mat-icon>check</mat-icon>
+      </button>
+    </form>
   </td-layout-nav>
 </td-layout>
