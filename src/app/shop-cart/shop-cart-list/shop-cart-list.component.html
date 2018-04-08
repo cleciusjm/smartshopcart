@@ -13,24 +13,22 @@
     </button>
     <section class="body">
       <div class="list">
-        <header>
-          <h1>Carrinho de compras</h1>
-        </header>
-        <section class="items">
-          <mat-list>
-            <mat-list-item class="item" *ngFor="let item of items" (click)="onItemSelect(item)">
+        <section class="emptyMessage" *ngIf="items.length == 0">
+          Seu carrinho está vazio
+        </section>
+        <section class="items" *ngIf="items.length >= 0">
+          <mat-nav-list>
+            <a mat-list-item class="item" *ngFor="let item of items" (click)="onItemSelect(item)">
               <h4 mat-line>{{item.name}}</h4>
               <p mat-line> {{item.amount}} un x {{item.unitaryValue | currency:'BRL'}} = {{item.total | currency:'BRL'}}</p>
               <mat-divider></mat-divider>
-            </mat-list-item>
-          </mat-list>
+            </a>
+          </mat-nav-list>
         </section>
       </div>
       <footer class="mat-elevation-z2">
-        <div>
-          <label>Total</label>
-          {{cart.total | currency:'BRL'}}
-        </div>
+        <label>Total</label>
+        {{cart.total | currency:'BRL'}}
       </footer>
     </section>
     <button mat-fab color="primary" (click)="onNewClick()">

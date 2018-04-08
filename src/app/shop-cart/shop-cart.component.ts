@@ -24,7 +24,7 @@ export class ShopCartComponent implements OnInit {
     this.reloadFromCurrent();
     this.activeRoute.url.subscribe(url => {
       if (url.length > 0) {
-        const last = url[url.length - 1]
+        const last = url[url.length - 1];
         if (last.path == NEW_ITEM_PATH) {
           this.selectedItem = this.createNewItem();
         } else if (!isNaN(+last.path)) {
@@ -33,9 +33,8 @@ export class ShopCartComponent implements OnInit {
             this.selectedItem = this.cart.items[idx];
           }
         }
-
       }
-    })
+    });
   }
 
   reloadFromCurrent() {
@@ -56,13 +55,19 @@ export class ShopCartComponent implements OnInit {
 
   onItemSelect(item: ShopCartItem) {
     const idx = this.cart.items.indexOf(item);
-    if (idx > 0) {
+    if (idx >= 0) {
       this.router.navigate(['cart', `${idx}`])
     }
   }
 
   onItemSaveClick(item: ShopCartItem) {
-    this.cart.items.push(item);
+    const items = this.cart.items;
+    const idx = items.indexOf(items.find(i => i.id == item.id));
+    if (idx == -1) {
+      items.push(item);
+    } else {
+      items[idx] = item;
+    }
     this.service.currentCart = this.cart;
   }
 

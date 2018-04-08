@@ -10,13 +10,13 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class ShopCartItemDetailComponent implements OnInit {
 
-
   @Output() saveClick = new EventEmitter<ShopCartItem>();
 
   form: FormGroup;
 
   constructor(private location: Location, private fb: FormBuilder) {
     this.form = fb.group({
+      id: '',
       name: ['', Validators.required],
       amount: ['', Validators.required],
       unitaryValue: ['', Validators.required]
@@ -26,6 +26,7 @@ export class ShopCartItemDetailComponent implements OnInit {
   @Input()
   set item(value: ShopCartItem) {
     this.form.setValue({
+      id: value.id,
       name: value.name,
       amount: value.amount,
       unitaryValue: value.unitaryValue
@@ -34,7 +35,7 @@ export class ShopCartItemDetailComponent implements OnInit {
 
   get item() {
     const val = this.form.value;
-    const item = new ShopCartItem();
+    const item = new ShopCartItem(val.id);
     item.name = val.name;
     item.amount = val.amount;
     item.unitaryValue = val.unitaryValue;

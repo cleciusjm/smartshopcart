@@ -1,5 +1,5 @@
 $toolbarH: 64px;
-$footerH: 64px;
+$footerH: 50px;
 :host {
     button[mat-fab] {
         position: absolute;
@@ -12,8 +12,10 @@ $footerH: 64px;
             max-height: calc(100vh - #{$toolbarH + $footerH} - 2px);
             margin-bottom: 2px;
             overflow-y: auto;
-            header {
-                margin: 2px 5px;
+            .emptyMessage {
+                padding: 20px;
+                text-align: center;
+                font-size: 2em;
             }
             .items {
                 overflow-y: auto;
@@ -25,7 +27,7 @@ $footerH: 64px;
         footer {
             background: white;
             height: $footerH;
-            font-size: 2.5em;
+            font-size: 2em;
             text-align: center;
             font-weight: bold;
         }
