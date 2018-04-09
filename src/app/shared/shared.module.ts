@@ -5,7 +5,7 @@ import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatSna
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { CovalentLayoutModule } from '@covalent/core';
+import { CovalentLayoutModule, CovalentDialogsModule } from '@covalent/core';
 
 @NgModule({
   imports: [
@@ -31,7 +31,8 @@ import { CovalentLayoutModule } from '@covalent/core';
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
-    CovalentLayoutModule
+    CovalentLayoutModule,
+    CovalentDialogsModule
   ]
 })
 export class SharedModule { }

@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { ShopCartItem } from '../shop-cart';
-import { Location } from '@angular/common';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output, ViewContainerRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { TdDialogService } from '@covalent/core';
+
+import { ShopCartItem } from '../shop-cart';
 
 @Component({
   selector: 'app-shop-cart-item-detail',
@@ -12,14 +13,18 @@ import { Router } from '@angular/router';
 })
 export class ShopCartItemDetailComponent implements OnInit {
 
+  @Input() showRemove = false;
   @Output() saveClick = new EventEmitter<ShopCartItem>();
+  @Output() removeClick = new EventEmitter<ShopCartItem>();
 
   form: FormGroup;
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private snackbar: MatSnackBar) {
+    private snackbar: MatSnackBar,
+    private viewContainerRef: ViewContainerRef,
+    private dialogService: TdDialogService) {
     this.form = fb.group({
       id: '',
       name: ['', Validators.required],
@@ -58,6 +63,17 @@ export class ShopCartItemDetailComponent implements OnInit {
     } else {
       this.snackbar.open('Preencha corretamente os campos', null, { duration: 2000 });
     }
+  }
+  onRemoveItem() {
+    this.dialogService.openConfirm({
+      message: 'Deseja remover este item?',
+      title: 'Atenção',
+      acceptButton: 'Sim',
+      cancelButton: 'Não',
+      viewContainerRef: this.viewContainerRef
+    }).afterClosed().subscribe(ok => {
+      if (ok) { this.removeClick.emit(this.item); this.goBack(); }
+    });
   }
 
   goBack() {

@@ -70,6 +70,15 @@ export class ShopCartComponent implements OnInit {
     }
     this.service.currentCart = this.cart;
   }
+  onItemRemoveClick(item: ShopCartItem) {
+    this.cart.items = this.cart.items.filter(i => i.id != item.id);
+    this.service.currentCart = this.cart;
+
+  }
+  cleanShoppingCart() {
+    this.cart = this.service.currentCart = new ShopCart();
+    this.selectedItem = null;
+  }
 
   get showList(): boolean {
     return !this.selectedItem;

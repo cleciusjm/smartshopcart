@@ -1,8 +1,17 @@
 <td-layout>
-  <td-layout-nav toolbarTitle="Novo Item">
-    <button mat-icon-button td-menu-button (click)="goBack()">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
+  <td-layout-nav toolbarTitle="">
+    <div td-toolbar-content layout="row" layout-align="start center" flex>
+      <button mat-icon-button td-menu-button (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span>Novo Item</span>
+      <span class="actions">
+        <button mat-icon-button matTooltip="Limpar Carrinho" (click)="onRemoveItem()" *ngIf="showRemove">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </span>
+    </div>
+
     <form [formGroup]="form" (submit)="onSaveClick()">
       <section class="body">
         <mat-card>

@@ -4,6 +4,11 @@
         bottom: 16px;
         right: 16px;
     }
+    .actions {
+        right: 0;
+        position: fixed;
+        padding-right: 15px;
+    }
     .body {
         mat-card {
             display: grid;
