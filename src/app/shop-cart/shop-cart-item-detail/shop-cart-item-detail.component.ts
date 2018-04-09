@@ -3,6 +3,7 @@ import { ShopCartItem } from '../shop-cart';
 import { Location } from '@angular/common';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shop-cart-item-detail',
@@ -16,7 +17,7 @@ export class ShopCartItemDetailComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private location: Location,
+    private router: Router,
     private fb: FormBuilder,
     private snackbar: MatSnackBar) {
     this.form = fb.group({
@@ -60,7 +61,7 @@ export class ShopCartItemDetailComponent implements OnInit {
   }
 
   goBack() {
-    this.location.back();
+    this.router.navigate(['cart'])
   }
 
   get canSave() {

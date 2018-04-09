@@ -1,5 +1,5 @@
 $toolbarH: 64px;
-$footerH: 50px;
+$footerH: 44px;
 :host {
     button[mat-fab] {
         position: absolute;
@@ -8,16 +8,16 @@ $footerH: 50px;
     }
     .body {
         .list {
-            height: calc(100vh - #{$toolbarH + $footerH} - 2px);
-            max-height: calc(100vh - #{$toolbarH + $footerH} - 2px);
-            margin-bottom: 2px;
+            height: calc(100vh - #{$toolbarH + $footerH});
+            max-height: calc(100vh - #{$toolbarH + $footerH});
             overflow-y: auto;
             .emptyMessage {
                 padding: 20px;
                 text-align: center;
-                font-size: 2em;
+                font-size: 1.5em;
             }
             .items {
+                margin-bottom: 20px;
                 overflow-y: auto;
                 .item {
                     background: white;
@@ -27,6 +27,10 @@ $footerH: 50px;
         footer {
             background: white;
             height: $footerH;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
             font-size: 2em;
             text-align: center;
             font-weight: bold;
