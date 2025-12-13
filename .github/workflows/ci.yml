@@ -27,5 +27,10 @@ jobs:
     - name: Run unit tests
       run: ./node_modules/.bin/ng test --browsers=ChromeHeadless --watch=false
 
+    - name: Start server
+      run: ./node_modules/.bin/ng serve > ng_serve.log 2>&1 &
+
     - name: Run e2e tests
-      run: ./node_modules/.bin/ng e2e
+      run: |
+        sleep 10
+        ./node_modules/.bin/ng e2e
