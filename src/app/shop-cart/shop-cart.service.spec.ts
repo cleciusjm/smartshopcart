@@ -9,7 +9,8 @@ describe('ShopCartService', () => {
     });
   });
 
-  it('should be created', inject([ShopCartService], (service: ShopCartService) => {
+  it('should be created', () => {
+    const service: ShopCartService = TestBed.inject(ShopCartService);
     expect(service).toBeTruthy();
-  }));
+  });
 });

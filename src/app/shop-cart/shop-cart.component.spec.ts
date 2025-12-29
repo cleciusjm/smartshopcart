@@ -1,14 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ShopCartComponent } from './shop-cart.component';
+import { ShopCartService } from './shop-cart.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-describe('ListComponent', () => {
+describe('ShopCartComponent', () => {
   let component: ShopCartComponent;
   let fixture: ComponentFixture<ShopCartComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ShopCartComponent]
+      imports: [RouterTestingModule],
+      declarations: [ShopCartComponent],
+      providers: [ShopCartService],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();
   }));
@@ -23,3 +28,4 @@ describe('ListComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

@@ -1,44 +1,90 @@
 $toolbarH: 64px;
-$footerH: 44px;
+$footerH: 60px;
+
 :host {
+    display: block;
+    height: 100vh;
+
+    mat-sidenav-container {
+        height: 100%;
+    }
+
+    mat-sidenav-content {
+        height: 100%;
+        overflow: hidden;
+    }
+
     button[mat-fab] {
-        position: absolute;
-        bottom: 16px;
-        right: 16px;
-    }
-    .actions {
-        right: 0;
         position: fixed;
-        padding-right: 15px;
+        bottom: calc(#{$footerH} + 16px);
+        right: 16px;
+        z-index: 10;
     }
+
+    .toolbar-title {
+        margin-left: 8px;
+    }
+
     .body {
+        position: relative;
+        height: calc(100% - #{$toolbarH});
+
         .list {
-            height: calc(100vh - #{$toolbarH + $footerH});
-            max-height: calc(100vh - #{$toolbarH + $footerH});
+            height: calc(100% - #{$footerH});
             overflow-y: auto;
+            padding: 16px;
+            padding-bottom: 24px;
+
             .emptyMessage {
-                padding: 20px;
+                padding: 40px 20px;
                 text-align: center;
-                font-size: 1.5em;
+                font-size: 1.2em;
+                color: rgba(0, 0, 0, 0.54);
             }
+
             .items {
-                margin-bottom: 20px;
-                overflow-y: auto;
+                background: white;
+                border-radius: 4px;
+                overflow: hidden;
+
                 .item {
                     background: white;
+
+                    [matListItemTitle],
+                    [matListItemLine] {
+                        white-space: normal !important;
+                        line-height: 1.4;
+                    }
+
+                    [matListItemLine] {
+                        margin-top: 4px;
+                        font-size: 0.9em;
+                        color: rgba(0, 0, 0, 0.6);
+                    }
+
+                    &:hover {
+                        background-color: rgba(0, 0, 0, 0.04);
+                    }
                 }
             }
         }
+
         footer {
-            background: white;
-            height: $footerH;
-            position: absolute;
+            position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            font-size: 2em;
-            text-align: center;
+            background: white;
+            height: $footerH;
+            font-size: 1.5em;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0 16px;
+            box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 5;
         }
     }
 }

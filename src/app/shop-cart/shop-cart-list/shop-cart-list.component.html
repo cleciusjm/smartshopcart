@@ -1,24 +1,25 @@
-<td-layout>
-  <td-navigation-drawer flex sidenavTitle="Meu Carinho">
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #drawer mode="over" opened="false" class="sidenav">
+    <mat-toolbar color="primary">Meu Carrinho</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item>
-        <mat-icon>home</mat-icon>
-        Carrinho de Compras
+        <mat-icon matListItemIcon>home</mat-icon>
+        <span matListItemTitle>Carrinho de Compras</span>
       </a>
     </mat-nav-list>
-  </td-navigation-drawer>
-  <td-layout-nav>
-    <div td-toolbar-content layout="row" layout-align="start center" flex>
-      <button mat-icon-button td-menu-button tdLayoutToggle>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span [routerLink]="['/']" class="cursor-pointer">Meu Carrinho</span>
-      <span class="actions">
-        <button mat-icon-button matTooltip="Limpar Carrinho" (click)="cleanShoppingCart()">
-          <mat-icon>remove_shopping_cart</mat-icon>
-        </button>
-      </span>
-    </div>
+      <span [routerLink]="['/']" class="cursor-pointer toolbar-title">Meu Carrinho</span>
+      <span class="spacer"></span>
+      <button mat-icon-button matTooltip="Limpar Carrinho" (click)="cleanShoppingCart()">
+        <mat-icon>remove_shopping_cart</mat-icon>
+      </button>
+    </mat-toolbar>
+
     <section class="body">
       <div class="list">
         <section class="emptyMessage" *ngIf="!hasItems">
@@ -26,11 +27,15 @@
         </section>
         <section class="items mat-elevation-z2" *ngIf="hasItems">
           <mat-nav-list>
-            <a mat-list-item class="item" *ngFor="let item of items" (click)="onItemSelect(item)">
-              <h4 mat-line>{{item.name}}</h4>
-              <p mat-line> {{item.amount}} un x {{item.unitaryValue | currency:'BRL'}} = {{item.total | currency:'BRL'}}</p>
-              <mat-divider></mat-divider>
-            </a>
+            <ng-container *ngFor="let item of items; let last = last">
+              <a mat-list-item class="item" (click)="onItemSelect(item)">
+                <h4 matListItemTitle>{{item.name}}</h4>
+                <div matListItemLine> {{item.amount}} un x {{item.unitaryValue | currency:'BRL'}} = {{item.total |
+                  currency:'BRL'}}
+                </div>
+              </a>
+              <mat-divider *ngIf="!last"></mat-divider>
+            </ng-container>
           </mat-nav-list>
         </section>
       </div>
@@ -39,8 +44,8 @@
         {{cart.total | currency:'BRL'}}
       </footer>
     </section>
-    <button mat-fab color="primary" (click)="onNewClick()">
+    <button mat-fab color="primary" class="fab-bottom-right" (click)="onNewClick()">
       <mat-icon>add</mat-icon>
     </button>
-  </td-layout-nav>
-</td-layout>
+  </mat-sidenav-content>
+</mat-sidenav-container>

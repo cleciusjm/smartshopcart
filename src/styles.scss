@@ -1,12 +1,48 @@
-@import '~@angular/material/theming';
-@import '~@covalent/core/theming/all-theme';
-// Define a custom typography config that overrides the font-family
-// or any typography level.
-$typography: mat-typography-config( $font-family: 'Roboto, monospace', $headline: mat-typography-level(32px, 48px, 700));
-@include mat-core($typography); // $typography is an **optional** argument for the mat-core
-$primary: mat-palette($mat-orange, 800, 100, 900);
-$accent : mat-palette($mat-light-blue, 600, 100, 900);
-$warn : mat-palette($mat-red, 600, 100, 900);
-$theme: mat-light-theme($primary, $accent, $warn);
-@include angular-material-theme($theme);
-@include covalent-theme($theme, $typography); // $typography is an **optional** argument for the covalent-theme
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$smart-grocery-list-primary: mat.m2-define-palette(mat.$m2-orange-palette, 800, 100, 900);
+$smart-grocery-list-accent: mat.m2-define-palette(mat.$m2-light-blue-palette, 600, 100, 900);
+$smart-grocery-list-warn: mat.m2-define-palette(mat.$m2-red-palette, 600, 100, 900);
+
+$smart-grocery-list-theme: mat.m2-define-light-theme((color: (primary: $smart-grocery-list-primary,
+        accent: $smart-grocery-list-accent,
+        warn: $smart-grocery-list-warn,
+      )));
+
+@include mat.all-component-themes($smart-grocery-list-theme);
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// polyfill for some covalent classes used
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.actions {
+  margin-left: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.fab-bottom-right {
+  position: absolute !important;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+}
+
+.sidenav {
+  width: 250px;
+}

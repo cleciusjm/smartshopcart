@@ -5,8 +5,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'cart', pathMatch: 'full' }
 ];
 
-export const module: ModuleWithProviders = RouterModule.forRoot(routes, {
-  initialNavigation: 'enabled',
+export const module: ModuleWithProviders<RouterModule> = RouterModule.forRoot(routes, {
+  initialNavigation: 'enabledBlocking',
   enableTracing: false,
   onSameUrlNavigation: 'reload'
 });

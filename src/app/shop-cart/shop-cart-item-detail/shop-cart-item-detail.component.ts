@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewContainerRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { TdDialogService } from '@covalent/core';
 
 import { ShopCartItem } from '../shop-cart';
 
@@ -22,9 +21,7 @@ export class ShopCartItemDetailComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private snackbar: MatSnackBar,
-    private viewContainerRef: ViewContainerRef,
-    private dialogService: TdDialogService) {
+    private snackbar: MatSnackBar) {
     this.form = fb.group({
       id: '',
       name: ['', Validators.required],
@@ -65,15 +62,10 @@ export class ShopCartItemDetailComponent implements OnInit {
     }
   }
   onRemoveItem() {
-    this.dialogService.openConfirm({
-      message: 'Deseja remover este item?',
-      title: 'Atenção',
-      acceptButton: 'Sim',
-      cancelButton: 'Não',
-      viewContainerRef: this.viewContainerRef
-    }).afterClosed().subscribe(ok => {
-      if (ok) { this.removeClick.emit(this.item); this.goBack(); }
-    });
+    if (confirm('Deseja remover este item?')) {
+      this.removeClick.emit(this.item);
+      this.goBack();
+    }
   }
 
   goBack() {

@@ -1,37 +1,40 @@
-<td-layout>
-  <td-layout-nav toolbarTitle="">
-    <div td-toolbar-content layout="row" layout-align="start center" flex>
-      <button mat-icon-button td-menu-button (click)="goBack()">
+<mat-sidenav-container fullscreen>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="goBack()">
         <mat-icon>arrow_back</mat-icon>
       </button>
-      <span>Novo Item</span>
-      <span class="actions">
-        <button mat-icon-button matTooltip="Limpar Carrinho" (click)="onRemoveItem()" *ngIf="showRemove">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </span>
-    </div>
+      <span class="toolbar-title">Novo Item</span>
+      <span class="spacer"></span>
+      <button mat-icon-button matTooltip="Limpar Carrinho" (click)="onRemoveItem()" *ngIf="showRemove">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-toolbar>
 
     <form [formGroup]="form" (submit)="onSaveClick()">
       <section class="body">
         <mat-card>
-          <mat-form-field>
-            <input matInput type="text" placeholder="Produto" formControlName="name">
+          <mat-form-field appearance="fill">
+            <mat-label>Produto</mat-label>
+            <input matInput type="text" formControlName="name">
           </mat-form-field>
-          <mat-form-field>
-            <input matInput #unValue type="number" placeholder="Valor Unitário" formControlName="unitaryValue" (focus)="unValue.select()">
+          <mat-form-field appearance="fill">
+            <mat-label>Valor Unitário</mat-label>
+            <input matInput #unValue type="number" formControlName="unitaryValue" (focus)="unValue.select()">
           </mat-form-field>
-          <mat-form-field>
-            <input matInput #amount type="number" placeholder="Quantidade" formControlName="amount" (focus)="amount.select()">
+          <mat-form-field appearance="fill">
+            <mat-label>Quantidade</mat-label>
+            <input matInput #amount type="number" formControlName="amount" (focus)="amount.select()">
           </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Valor Total" [value]="item.total | currency:'BRL'" readonly>
+          <mat-form-field appearance="fill">
+            <mat-label>Valor Total</mat-label>
+            <input matInput [value]="item.total | currency:'BRL'" readonly>
           </mat-form-field>
         </mat-card>
       </section>
-      <button mat-fab type="submit" *ngIf="canSave" color="primary" (click)="onSaveClick()">
+      <button mat-fab type="submit" *ngIf="canSave" color="primary" class="fab-bottom-right" (click)="onSaveClick()">
         <mat-icon>check</mat-icon>
       </button>
     </form>
-  </td-layout-nav>
-</td-layout>
+  </mat-sidenav-content>
+</mat-sidenav-container>
