@@ -1,0 +1,51 @@
+{
+  "packageId": "com.my_shop_cart.app",
+  "host": "my-shop-cart.web.app",
+  "name": "Meu Carrinho de Compras",
+  "launcherName": "Meu Carrinho",
+  "display": "standalone",
+  "themeColor": "#673AB7",
+  "themeColorDark": "#512DA8",
+  "navigationColor": "#673AB7",
+  "navigationColorDark": "#512DA8",
+  "navigationDividerColor": "#673AB7",
+  "navigationDividerColorDark": "#512DA8",
+  "backgroundColor": "#673AB7",
+  "enableNotifications": false,
+  "startUrl": "/",
+  "iconUrl": "http://localhost:8080/assets/icons/icon-512x512.png",
+  "maskableIconUrl": "http://localhost:8080/assets/icons/maskable-512x512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./android-keystore.jks",
+    "alias": "meu-carrinho"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 2,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://my-shop-cart.web.app/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": {
+      "enabled": false
+    },
+    "playBilling": {
+      "enabled": false
+    }
+  },
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://my-shop-cart.web.app/",
+  "minSdkVersion": 23,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "displayOverride": [],
+  "appVersion": "1.0.0"
+}

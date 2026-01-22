@@ -5,6 +5,7 @@
 /dist-server
 /tmp
 /out-tsc
+build/
 
 # Angular cache
 /.angular/cache
@@ -51,3 +52,16 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Bubblewrap & Android
+.bubblewrap/
+.android/
+android/
+*.apk
+*.apk.idsig
+*.aab
+*.jks
+*.keystore
+assetlinks.json
+app/build/
+.gradle/

@@ -28,7 +28,8 @@
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",
-                            "src/manifest.json"
+                            "src/manifest.json",
+                            "src/.well-known"
                         ],
                         "styles": [
                             "src/styles.scss"
@@ -37,6 +38,7 @@
                     },
                     "configurations": {
                         "production": {
+                            "serviceWorker": "src/ngsw-config.json",
                             "budgets": [
                                 {
                                     "type": "initial",
@@ -89,7 +91,8 @@
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",
-                            "src/manifest.json"
+                            "src/manifest.json",
+                            "src/.well-known"
                         ],
                         "styles": [
                             "src/styles.scss"
